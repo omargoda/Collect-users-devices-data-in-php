@@ -2,7 +2,7 @@
 This is a PHP web application that is used to collect users' devices data such as IP address, operating system, screen width and height, web browser, and then stores it into a MySQL database...  
 The application uses the http request header information.  
   
-It consists of 4 files (3 PHP modules and 1 html file) as follows:  
+It consists of 4 files (3 PHP modules and 1 HTML file) as follows:  
 - Counter.php: PHP-rendered web page that renders the records count in the database and live-updates it by communicating with the counterApp.php API file.   
 - counterApp.php: API file that sends the count of the records in the database to the client.  
 - index.html: The page that collects users' data and then sends it to the server using AJAX request to the screenRecorder.php file.  
