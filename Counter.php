@@ -21,7 +21,6 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<meta charset="utf-8">
 		<title>Response Counter</title>
-		<link rel="shortcut icon" href="https://helwanmed.ekb.eg/helwan-university/95f42246f67f4b518751c7917fb503a8/favicon.ico">
 	</head>
 	<body style="background-color: #FFDEAD">
 	<p class="counter" style="text-align: center; font-size: 120px; color: #696969;">
