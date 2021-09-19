@@ -1,6 +1,6 @@
 # Collect-users-devices-data-in-PHP
 This is a PHP web application that is used to collect users' devices data such as IP address, operating system, screen width and height, web browser, and then stores it into a MySQL database...  
-The application uses the http request header information.  
+The application uses the http request header information through PHP $_SERVER variable.  
   
 It consists of 4 files (3 PHP modules and 1 HTML file) as follows:  
 - Counter.php: PHP-rendered web page that renders the records count in the database and live-updates it by communicating with the counterApp.php API file.   
